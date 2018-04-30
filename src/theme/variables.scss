@@ -37,8 +37,10 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
+  success:    green,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  c-yellow:   #FFEB3B
 );
 
 
@@ -72,6 +74,11 @@ $colors: (
 
 @import "ionic.theme.default";
 
+$toolbar-background: #222;
+$toggle-md-active-color: 	color($colors, dark);
+$toggle-ios-background-color-on: 	color($colors, dark);
+$badge-ios-background-color: color($colors, dark);
+$badge-md-background-color: color($colors, dark);
 
 // Ionicons
 // --------------------------------------------------

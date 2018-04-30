@@ -1,0 +1,100 @@
+<!--
+  Generated template for the EditTaskPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+        <button ion-button icon-only (click)="dismiss()"> 
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title text-end>{{ task.title | truncate:[15, '...'] }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #taskForm="ngForm" novalidate>
+    <ion-item class="animated slideInLeft">
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" name="title" required [(ngModel)]="task.title" #title="ngModel"
+      minlength="4" maxlength="15">
+      </ion-input>
+    </ion-item>
+    <div padding *ngIf="title.invalid && title.dirty">
+      <span class="global__input-error">Title must be between 4-15 charcters</span>
+    </div>
+    <ion-item class="animated slideInRight">
+      <ion-label floating>Description</ion-label>
+      <ion-textarea name="desc" required [(ngModel)]="task.desc" #desc="ngModel"
+      minlength="15" maxlength="35">
+      </ion-textarea>
+    </ion-item>
+    <div padding *ngIf="desc.invalid && desc.dirty">
+      <span class="global__input-error">Description must be between 15-35 charcters</span>
+    </div>
+    <ion-item class="animated slideInLeft">
+      <ion-label floating>Label</ion-label>
+      <ion-select [(ngModel)]="task.label" name="label" okText="Okay" cancelText="Cancel" required #label="ngModel">
+        <ion-option *ngFor="let label of labels" [value]="label | lowercase"> {{ label }} </ion-option>
+      </ion-select>
+    </ion-item>
+    <div padding *ngIf="label.invalid && label.dirty">
+      <span class="global__input-error">Label is required</span>
+    </div>
+    <ion-item class="animated slideInRight">
+      <ion-label floating>Transition Type</ion-label>
+      <ion-select [(ngModel)]="task.type" name="type" okText="Okay" cancelText="Cancel" required #type="ngModel">
+        <ion-option value="1">Enter</ion-option>
+        <ion-option value="2">Exit</ion-option>
+        <ion-option value="3">Both</ion-option>
+      </ion-select>
+    </ion-item>
+    <div padding *ngIf="label.invalid && label.dirty">
+      <span class="global__input-error">Transition Type is required</span>
+    </div>
+    <ion-item class="animated slideInLeft">
+      <ion-label floating>Latitude</ion-label>
+      <ion-input type="text" name="lat" required [(ngModel)]="task.addr.lat" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item class="animated slideInRight">
+      <ion-label floating>Longitude</ion-label>
+      <ion-input type="text" name="lng" required [(ngModel)]="task.addr.lng" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item class="animated slideInLeft">
+      <ion-label floating>Radius</ion-label>
+      <ion-input type="number" min="50" max="1000" name="radius" required [(ngModel)]="task.addr.radius"  #radius="ngModel">
+      </ion-input>
+    </ion-item>
+    <div padding *ngIf="radius.invalid && radius.dirty">
+      <span class="global__input-error">Radius must between 50-1000 m</span>
+    </div>
+    <ion-item class="animated slideInRight">
+      <ion-label floating>is Complete?</ion-label>
+      <ion-select [(ngModel)]="task.isComplete" name="is_complete" okText="Okay" cancelText="Cancel" required #isComplete="ngModel">
+        <ion-option value="0">Incomplete</ion-option>
+        <ion-option value="1">Complete</ion-option>
+      </ion-select>
+    </ion-item>
+    <div padding *ngIf="label.invalid && label.dirty">
+      <span class="global__input-error">Transition Type is required</span>
+    </div>
+    <ion-item class="animated slideInLeft">
+      <ion-label floating>Location Name</ion-label>
+      <ion-input type="text" name="name" required [(ngModel)]="task.addr.name" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-row class="animated fadeIn" padding-top text-center>
+      <div>
+        <button color="dark" ion-button round outline text-center (click)="editTask()" [disabled]="taskForm.invalid">Edit Task</button>
+      </div>
+    </ion-row>
+  </form>
+</ion-content>

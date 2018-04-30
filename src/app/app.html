@@ -1,1 +1,54 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+
+<ion-menu [content]="mycontent" persistent="true">
+    <ion-header no-border>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+        
+    <ion-content>
+        <ion-list>
+            <button ion-item no-lines style="color: #3F51B5" (click)="navigateToTaskList(-1)" menuClose>
+                <ion-icon name="list-box" item-start></ion-icon>
+                All
+            </button>
+            <button ion-item no-lines style="color: #32db64" (click)="navigateToTaskList(1)" menuClose>
+                <ion-icon name="checkmark-circle" item-start></ion-icon>
+                Completed Task
+            </button>
+            <button ion-item no-lines  style="color: #FBC02D" (click)="navigateToTaskList(0)" menuClose>
+                <ion-icon name="time" item-start></ion-icon>
+                Pending Task
+            </button>
+            <button ion-item no-lines style="color: #f53d3d" (click)="navigateToTaskList()" menuClose>
+                <ion-icon name="alert" item-start></ion-icon>
+                Expired Task
+            </button>
+            <button ion-item no-lines style="color: #F48FB1">
+                <ion-icon name="globe" item-start></ion-icon>
+                Share
+            </button>
+            <button ion-item no-lines style="color: #5E35B1">
+                <ion-icon name="navigate" item-start></ion-icon>
+                Near By
+            </button>
+            <button ion-item no-lines style="color: #BDBDBD" (click)="navigateToSetting()" menuClose>
+                <ion-icon name="settings" item-start></ion-icon>
+                Setting
+            </button>
+        </ion-list>
+    </ion-content>
+
+    <ion-footer>
+        <ion-list>
+            <button ion-item no-lines style="color: #488aff" (click)="logout()" menuClose>
+                <ion-icon name="log-out" item-start></ion-icon>
+                Logout
+            </button>
+        </ion-list>
+    </ion-footer>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
